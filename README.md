@@ -11,9 +11,9 @@ There are 3 nodes in this project.
 
 1. `Cache` configuration node ... Memory cache instance. Each configuration node is isolated from other `Cache` nodes. Default TTL is 0 (never expired). Default check period is 0 (never checked).
 1. `Cache in` node ... Used for retrieving a stored value
-1. `Cache out` node ... Used for storing a key-value pair
+1. `Cache out` node ... Used for storing a key-value pair. You can set TTL (in seconds) as well as key-value pair by providing TTL property.
 
-The cache behavior is fully depending on [node-cache](https://www.npmjs.com/package/node-cache) library. But the project doesn't support full features of the library for making this node simpler.
+The cache behavior is fully depending on [node-cache](https://www.npmjs.com/package/node-cache) library. But the project doesn't support full features of the library for making the nodes simpler.
 
 ### Installation
 
@@ -143,3 +143,7 @@ You can try the following flow for testing the node behaviors after installing t
     }
 ]
 ```
+
+# Revision History
+* 1.0.0
+    - Initial release
