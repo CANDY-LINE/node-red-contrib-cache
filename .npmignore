@@ -1,0 +1,12 @@
+.git
+.gitignore
+.npmignore
+.jshintrc
+*.tgz
+*.zip
+tests
+node_modules
+*.log
+Gruntfile.js
+.travis.yml
+src

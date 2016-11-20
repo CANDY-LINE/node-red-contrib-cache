@@ -1,0 +1,57 @@
+{
+  "name": "node-red-contrib-cache",
+  "version": "0.0.0",
+  "description": "Node-RED nodes for memory cache",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CANDY-LINE/node-red-contrib-cache.git"
+  },
+  "author": "Daisuke Baba <baba.daisuke@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/CANDY-LINE/node-red-contrib-cache/issues"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "test": "grunt test",
+    "clean": "grunt clean",
+    "prepublish": "grunt build"
+  },
+  "homepage": "https://github.com/CANDY-LINE/node-red-contrib-cache#readme",
+  "keywords": [
+    "node-red",
+    "raspbian",
+    "CANDY RED",
+    "CANDY EGG"
+  ],
+  "devDependencies": {
+    "babel": "^5.8.34",
+    "babel-plugin-uglify": "^1.0.2",
+    "uglify-js": "^2.6.1",
+    "chai": "^3.3.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-babel": "5.0.3",
+    "grunt": ">=1.0.1 <2.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-run": "^0.5.2",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.0.1",
+    "mocha": "^2.3.3",
+    "sinon": "^1.17.1",
+    "time-grunt": "^1.2.2"
+  },
+  "dependencies": {
+    "es6-promises": "^1.0.10",
+    "node-cache": "^4.1.0",
+    "node-red": "^0.15.2",
+    "source-map-support": "^0.4.2"
+  },
+  "node-red": {
+    "nodes": {
+      "cache": "lib/cache.js"
+    }
+  }
+}

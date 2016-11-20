@@ -1,0 +1,10 @@
+node_modules
+*.map
+*.js
+lib/*.js
+test/*.js
+!*.es6.js
+lib/*.es6.js
+!Gruntfile.js
+*.tgz
+*.log
