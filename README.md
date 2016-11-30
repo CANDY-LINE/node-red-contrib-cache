@@ -145,5 +145,7 @@ You can try the following flow for testing the node behaviors after installing t
 ```
 
 # Revision History
+* 1.0.1
+    - Fix an issue where the wrong TTL value can be used on storing a value when there’s no valid TTL property in the msg object
 * 1.0.0
     - Initial release
