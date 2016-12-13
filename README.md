@@ -18,7 +18,7 @@ The cache behavior is fully depending on [node-cache](https://www.npmjs.com/pack
 ### Installation
 
 ```
-cd ~\.node-red
+cd ~/.node-red
 npm install node-red-contrib-cache
 ```
 
@@ -145,6 +145,8 @@ You can try the following flow for testing the node behaviors after installing t
 ```
 
 # Revision History
+* 1.0.2
+    - Remove redundant dependency
 * 1.0.1
     - Fix an issue where the wrong TTL value can be used on storing a value when there’s no valid TTL property in the msg object
 * 1.0.0
