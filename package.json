@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-cache",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node-RED nodes for memory cache",
   "license": "MIT",
   "repository": {
@@ -41,12 +41,12 @@
     "jshint-stylish": "^2.0.1",
     "mocha": "^2.3.3",
     "sinon": "^1.17.1",
-    "time-grunt": "^1.2.2"
+    "time-grunt": "^1.2.2",
+    "node-red": "^0.15.2"
   },
   "dependencies": {
     "es6-promises": "^1.0.10",
     "node-cache": "^4.1.0",
-    "node-red": "^0.15.2",
     "source-map-support": "^0.4.2"
   },
   "node-red": {
