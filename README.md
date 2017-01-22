@@ -145,6 +145,8 @@ You can try the following flow for testing the node behaviors after installing t
 ```
 
 # Revision History
+* 1.0.3
+    - Emit `null` when the retrieved value is `null`, `undefined` or `''(empty string)`
 * 1.0.2
     - Remove redundant dependency
 * 1.0.1
