@@ -1,6 +1,7 @@
 {
   "cache" : {
     "label" : {
+      "cache": "Cache",
       "defaultTtl" : "Default TTL",
       "checkPeriod" : "Check Interval",
       "keyProperty" : "Key Property",
