@@ -10,7 +10,7 @@
   <div class="form-row node-input-cache">
     <label for="node-input-cache">
       <i class="fa fa-database"></i>
-      <span data-i18n="cache.label.localName"></span></label>
+      <span data-i18n="cache.label.cache"></span></label>
     <input type="text" id="node-input-cache">
   </div>
   <div class="form-row" id="node-keyProperty">
@@ -34,35 +34,6 @@
   </div>
 </script>
 
-<script type='text/javascript'>
-  RED.nodes.registerType('Cache in',{
-    category: 'input',
-    defaults: {
-      name: { name: '' },
-      cache: { type: 'Cache', required: true },
-      keyType: { value : 'msg' },
-      keyProperty: { value: 'topic', required: true },
-      valueType: { value : 'msg' },
-      valueProperty: { value: 'payload', required: true },
-      useString: { value: false, required: false }
-    },
-    color: 'Turquoise',
-    inputs: 1,
-    outputs: 1,
-    icon: "db.png",
-    label: function() {
-      return this.name || 'Cache';
-    },
-    labelStyle: function() {
-      return this.name ? 'node_label_italic' : '';
-    },
-    oneditprepare: function() {
-      $("#node-input-keyProperty").typedInput({default:this.keyType||'msg',types:['msg']});
-      $("#node-input-valueProperty").typedInput({default:this.valueType||'msg',types:['msg']});
-    }
-  });
-</script>
-
 <!-- Cache out -->
 <script type='text/x-red' data-template-name='Cache out'>
   <div class='form-row'>
@@ -74,8 +45,8 @@
   </div>
   <div class="form-row node-input-cache">
     <label for="node-input-cache">
-      <i class="fa fa-random"></i>
-      <span data-i18n="cache.label.cache"></span></label>
+    <i class="fa fa-database"></i>
+    <span data-i18n="cache.label.cache"></span></label>
     <input type="text" id="node-input-cache">
   </div>
   <div class="form-row" id="node-keyProperty">
@@ -106,7 +77,58 @@
   </div>
 </script>
 
+<!-- Cache -->
+<script type='text/x-red' data-template-name='Cache'>
+  <div class='form-row'>
+    <label for='node-config-input-name'>
+      <i class='fa fa-tag'></i>
+      <span data-i18n='node-red:common.label.name'></span>
+    </label>
+    <input type='text' id='node-config-input-name' data-i18n='[placeholder]node-red:common.label.name'>
+  </div>
+  <div class='form-row'>
+    <label for='node-config-input-defaultTtl'>
+      <i class='fa fa-random'></i>
+      <span data-i18n='cache.label.defaultTtl'></span>
+    </label>
+    <input type='text' id='node-config-input-defaultTtl' maxlength="8" data-i18n='[placeholder]cache.placeholder.defaultTtl'>
+  </div>
+  <div class="form-row node-config-input-checkPeriod">
+    <label for="node-input-checkPeriod">
+      <i class="fa fa-edit"></i>
+      <span data-i18n="cache.label.checkPeriod"></span></label>
+    <input type="text" id="node-config-input-checkPeriod" maxlength="8" data-i18n='[placeholder]cache.placeholder.checkPeriod'>
+  </div>
+</script>
+
 <script type='text/javascript'>
+  RED.nodes.registerType('Cache in',{
+    category: 'input',
+    defaults: {
+      name: { name: '' },
+      cache: { type: 'Cache', required: true },
+      keyType: { value : 'msg' },
+      keyProperty: { value: 'topic', required: true },
+      valueType: { value : 'msg' },
+      valueProperty: { value: 'payload', required: true },
+      useString: { value: false, required: false }
+    },
+    color: 'Turquoise',
+    inputs: 1,
+    outputs: 1,
+    icon: "db.png",
+    label: function() {
+      return this.name || 'Cache';
+    },
+    labelStyle: function() {
+      return this.name ? 'node_label_italic' : '';
+    },
+    oneditprepare: function() {
+      $("#node-input-keyProperty").typedInput({default:this.keyType||'msg',types:['msg']});
+      $("#node-input-valueProperty").typedInput({default:this.valueType||'msg',types:['msg']});
+    }
+  });
+
   RED.nodes.registerType('Cache out',{
     category: 'output',
     defaults: {
@@ -137,33 +159,6 @@
       $("#node-input-ttlProperty").typedInput({default:this.ttlType||'msg',types:['msg']});
     }
   });
-</script>
-
-<!-- Cache -->
-<script type='text/x-red' data-template-name='Cache'>
-  <div class='form-row'>
-    <label for='node-config-input-name'>
-      <i class='fa fa-tag'></i>
-      <span data-i18n='node-red:common.label.name'></span>
-    </label>
-    <input type='text' id='node-config-input-name' data-i18n='[placeholder]node-red:common.label.name'>
-  </div>
-  <div class='form-row'>
-    <label for='node-config-input-defaultTtl'>
-      <i class='fa fa-random'></i>
-      <span data-i18n='cache.label.defaultTtl'></span>
-    </label>
-    <input type='text' id='node-config-input-defaultTtl' maxlength="8" data-i18n='[placeholder]cache.placeholder.defaultTtl'>
-  </div>
-  <div class="form-row node-config-input-checkPeriod">
-    <label for="node-input-checkPeriod">
-      <i class="fa fa-edit"></i>
-      <span data-i18n="cache.label.checkPeriod"></span></label>
-    <input type="text" id="node-config-input-checkPeriod" maxlength="8" data-i18n='[placeholder]cache.placeholder.checkPeriod'>
-  </div>
-</script>
-
-<script type='text/javascript'>
   RED.nodes.registerType('Cache',{
     category: 'config',
     defaults: {

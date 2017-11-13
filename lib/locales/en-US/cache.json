@@ -1,8 +1,9 @@
 {
   "cache" : {
     "label" : {
-      "defaultTtl" : "Default TTL (sec)",
-      "checkPeriod" : "Check Interval (sec)",
+      "cache": "Cache",
+      "defaultTtl" : "Default TTL",
+      "checkPeriod" : "Check Interval",
       "keyProperty" : "Key Property",
       "valueProperty" : "Value Property",
       "ttlProperty" : "TTL Property",
@@ -12,8 +13,8 @@
       "keyProperty" : "default: topic",
       "valueProperty" : "default: payload",
       "ttlProperty" : "(optional)",
-      "defaultTtl" : "0=unlimited",
-      "checkPeriod" : "0=never checked"
+      "defaultTtl" : "(in seconds, 0=unlimited)",
+      "checkPeriod" : "(in seconds, 0=never checked)"
     },
     "status": {
       "keys": "__n__"
