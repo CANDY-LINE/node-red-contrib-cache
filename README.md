@@ -19,7 +19,7 @@ The cache behavior is fully depending on [node-cache](https://www.npmjs.com/pack
 
 ```
 cd ~/.node-red
-npm install node-red-contrib-cache
+npm install --production node-red-contrib-cache
 ```
 
 ### Example flow
@@ -27,6 +27,9 @@ npm install node-red-contrib-cache
 You can import an example from the menu (`Import > Examples > cache > Cache Example`) on the editor.
 
 # Revision History
+* 1.1.0
+    - Fix #2
+    - Move the example flow to Import menu
 * 1.0.4
     - Fix labels
 * 1.0.3
