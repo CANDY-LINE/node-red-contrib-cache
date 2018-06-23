@@ -85,8 +85,12 @@ export default function(RED) {
           let key = RED.util.getMessageProperty(msg, this.keyProperty);
           if (key) {
             let value = RED.util.getMessageProperty(msg, this.valueProperty);
-            let ttl = this.ttlProperty ? RED.util.getMessageProperty(msg, this.ttlProperty) : 0;
-            this.cacheNode.cache.set(key, value, ttl || 0);
+            if (this.ttlProperty) {
+              let ttl = RED.util.getMessageProperty(msg, this.ttlProperty) || 0;
+              this.cacheNode.cache.set(key, value, ttl);
+            } else {
+              this.cacheNode.cache.set(key, value);
+            }
           }
         }
       });
