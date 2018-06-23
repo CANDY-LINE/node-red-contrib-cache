@@ -24,7 +24,7 @@ npm install node-red-contrib-cache
 
 ### Example flow
 
-You can import an example from the menu on the editor.
+You can import an example from the menu (`Import > Examples > cache > Cache Example`) on the editor.
 
 # Revision History
 * 1.0.4
