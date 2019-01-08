@@ -62,7 +62,7 @@ export default function(RED) {
             if (key) {
               this.cacheNode.cache.get(key, (err, value) => {
                 if (!err) {
-                  RED.util.setMessageProperty(msg, this.valueProperty, (value === '' || value === undefined) ? null : value));
+                  RED.util.setMessageProperty(msg, this.valueProperty, ((value === '' || value === undefined) ? null : value));
                   this.send(msg);
                 }
               });
