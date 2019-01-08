@@ -1,17 +1,32 @@
 [
     {
+        "id": "6675fe56.38d0d8",
+        "type": "debug",
+        "z": "824dab07.1cfb3",
+        "name": "Cache Miss!",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 590,
+        "y": 180,
+        "wires": []
+    },
+    {
         "id": "e46b1cee.89b1d8",
         "type": "inject",
         "z": "824dab07.1cfb3",
-        "name": "",
-        "topic": "timestamp",
-        "payload": "",
-        "payloadType": "date",
+        "name": "Dump all",
+        "topic": "",
+        "payload": "{\"dump\":true}",
+        "payloadType": "json",
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 200,
-        "y": 120,
+        "onceDelay": "",
+        "x": 160,
+        "y": 80,
         "wires": [
             [
                 "51cace14.0f32c8"
@@ -59,14 +74,15 @@
         "id": "8a636b27.8048a",
         "type": "inject",
         "z": "824dab07.1cfb3",
-        "name": "",
+        "name": "Store Timestamp",
         "topic": "timestamp",
         "payload": "",
         "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 200,
+        "onceDelay": "",
+        "x": 180,
         "y": 240,
         "wires": [
             [
@@ -95,14 +111,15 @@
         "id": "aba84e5b.0f6ed8",
         "type": "inject",
         "z": "824dab07.1cfb3",
-        "name": "",
+        "name": "Store Timestamp2",
         "topic": "timestamp2",
         "payload": "",
         "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 200,
+        "onceDelay": "",
+        "x": 190,
         "y": 320,
         "wires": [
             [
@@ -111,18 +128,24 @@
         ]
     },
     {
-        "id": "6675fe56.38d0d8",
-        "type": "debug",
+        "id": "cecf39c6.20a25",
+        "type": "inject",
         "z": "824dab07.1cfb3",
-        "name": "Cache Miss!",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "x": 590,
-        "y": 180,
-        "wires": []
+        "name": "Retrieve Timestamp",
+        "topic": "timestamp",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "51cace14.0f32c8"
+            ]
+        ]
     },
     {
         "id": "9a2a6fe9.ad297",
