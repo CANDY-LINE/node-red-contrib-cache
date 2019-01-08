@@ -47,14 +47,23 @@ export default function(RED) {
         this.on('updated', () => { this.status({fill:'green',shape:'dot',text:RED._('cache.status.keys', {n:this.cacheNode.cache.getStats().keys})}); });
       }
       this.name = n.name;
+      let sendMessage = (msg, cacheMiss) => {
+        if (this.cacheMissRouting) {
+          let ports = [];
+          ports[cacheMiss ? 1 : 0] = msg;
+          this.send(ports);
+        } else {
+          this.send(msg);
+        }
+      };
       this.on('input', (msg) => {
         if (this.cacheNode) {
-          if (msg.dump) {
+          if (msg.dump || msg.payload && msg.payload.dump) {
             this.cacheNode.cache.keys((err, keys) => {
               if (!err) {
                 this.cacheNode.cache.mget(keys, (err, value) => {
                   RED.util.setMessageProperty(msg, this.valueProperty, value);
-                  this.send(msg);
+                  sendMessage(msg);
                 });
               }
             });
@@ -65,13 +74,7 @@ export default function(RED) {
                 if (!err) {
                   let cacheMiss = (value === undefined);
                   RED.util.setMessageProperty(msg, this.valueProperty, ((value === '' || cacheMiss) ? null : value));
-                  if (this.cacheMissRouting) {
-                    let ports = [];
-                    ports[cacheMiss ? 1 : 0] = msg;
-                    this.send(ports);
-                  } else {
-                    this.send(msg);
-                  }
+                  sendMessage(msg, cacheMiss);
                 }
               });
             }
