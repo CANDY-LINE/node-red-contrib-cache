@@ -75,7 +75,7 @@ module.exports = function (grunt) {
     },
     mochaTest: {
       all: {
-        src: ['tests/**/*.js']
+        src: ['dist/tests/**/*.js']
       }
     },
   };

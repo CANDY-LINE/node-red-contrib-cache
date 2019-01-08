@@ -39,6 +39,7 @@ export default function(RED) {
       this.keyProperty = n.keyProperty || 'topic';
       this.valueProperty = n.valueProperty || 'payload';
       this.useString = n.useString;
+      this.cacheMissRouting = n.outputs > 1;
       this.cacheNodeId = n.cache;
       this.cacheNode = RED.nodes.getNode(this.cacheNodeId);
       if (this.cacheNode) {
@@ -46,16 +47,37 @@ export default function(RED) {
         this.on('updated', () => { this.status({fill:'green',shape:'dot',text:RED._('cache.status.keys', {n:this.cacheNode.cache.getStats().keys})}); });
       }
       this.name = n.name;
+      let sendMessage = (msg, cacheMiss) => {
+        if (this.cacheMissRouting) {
+          let ports = [];
+          ports[cacheMiss ? 1 : 0] = msg;
+          this.send(ports);
+        } else {
+          this.send(msg);
+        }
+      };
       this.on('input', (msg) => {
         if (this.cacheNode) {
-          let key = RED.util.getMessageProperty(msg, this.keyProperty);
-          if (key) {
-            this.cacheNode.cache.get(key, (err, value) => {
+          if (msg.dump || msg.payload && msg.payload.dump) {
+            this.cacheNode.cache.keys((err, keys) => {
               if (!err) {
-                RED.util.setMessageProperty(msg, this.valueProperty, (value === '' ? null : value));
-                this.send(msg);
+                this.cacheNode.cache.mget(keys, (err, value) => {
+                  RED.util.setMessageProperty(msg, this.valueProperty, value);
+                  sendMessage(msg);
+                });
               }
             });
+          } else {
+            let key = RED.util.getMessageProperty(msg, this.keyProperty);
+            if (key) {
+              this.cacheNode.cache.get(key, (err, value) => {
+                if (!err) {
+                  let cacheMiss = (value === undefined);
+                  RED.util.setMessageProperty(msg, this.valueProperty, ((value === '' || cacheMiss) ? null : value));
+                  sendMessage(msg, cacheMiss);
+                }
+              });
+            }
           }
         }
       });

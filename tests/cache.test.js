@@ -4,7 +4,7 @@ import 'source-map-support/register';
 import * as sinon from 'sinon';
 import { assert } from 'chai';
 import RED from 'node-red';
-import cacheNode from '../lib/cache';
+import cacheNode from '../cache';
 
 let server = sinon.spy();
 let settings = sinon.spy();

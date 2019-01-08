@@ -6,6 +6,7 @@
       <span data-i18n='node-red:common.label.name'></span>
     </label>
     <input type='text' id='node-input-name' data-i18n='[placeholder]node-red:common.label.name'>
+    <input type="hidden" id="node-input-outputs"/>
   </div>
   <div class="form-row node-input-cache">
     <label for="node-input-cache">
@@ -31,6 +32,11 @@
     <label>&nbsp;</label>
     <input type="checkbox" id="node-input-useString" style="display: inline-block; width: auto; vertical-align: top;">
     <label for="node-input-useString" style="width: 70%;" data-i18n="cache.label.useString"></label>
+  </div>
+  <div class="form-row" id="node-cacheMissRouting">
+    <label>&nbsp;</label>
+    <input type="checkbox" id="node-input-cacheMissRouting" style="display: inline-block; width: auto; vertical-align: top;">
+    <label for="node-input-cacheMissRouting" style="width: 70%;" data-i18n="cache.label.cacheMissRouting"></label>
   </div>
 </script>
 
@@ -111,7 +117,8 @@
       keyProperty: { value: 'topic', required: true },
       valueType: { value : 'msg' },
       valueProperty: { value: 'payload', required: true },
-      useString: { value: false, required: false }
+      useString: { value: false, required: false },
+      outputs: { value: 1 }
     },
     color: 'Turquoise',
     inputs: 1,
@@ -124,8 +131,18 @@
       return this.name ? 'node_label_italic' : '';
     },
     oneditprepare: function() {
-      $("#node-input-keyProperty").typedInput({default:this.keyType||'msg',types:['msg']});
-      $("#node-input-valueProperty").typedInput({default:this.valueType||'msg',types:['msg']});
+      var node = this;
+      $('#node-input-keyProperty').typedInput({default:this.keyType||'msg',types:['msg']});
+      $('#node-input-valueProperty').typedInput({default:this.valueType||'msg',types:['msg']});
+      $('#node-input-cacheMissRouting').prop('checked', this.outputs > 1).click(function() {
+        var outputCount = $('#node-input-outputs').val('{}');
+        var cacheMissRouting = $(this).prop('checked');
+        if (cacheMissRouting) {
+          outputCount.val(JSON.stringify({0:0, 1:1}));
+        } else {
+          outputCount.val(JSON.stringify({0:0}));
+        }
+      });
     }
   });
 

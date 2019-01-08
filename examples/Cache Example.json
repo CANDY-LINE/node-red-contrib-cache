@@ -1,79 +1,101 @@
 [
     {
-        "id": "f3cb898c.c292b8",
+        "id": "6675fe56.38d0d8",
+        "type": "debug",
+        "z": "824dab07.1cfb3",
+        "name": "Cache Miss!",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 590,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "e46b1cee.89b1d8",
         "type": "inject",
-        "z": "e9528acf.2c82d",
-        "name": "",
-        "topic": "timestamp",
-        "payload": "",
-        "payloadType": "date",
+        "z": "824dab07.1cfb3",
+        "name": "Dump all",
+        "topic": "",
+        "payload": "{\"dump\":true}",
+        "payloadType": "json",
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 280,
-        "y": 180,
+        "onceDelay": "",
+        "x": 160,
+        "y": 80,
         "wires": [
             [
-                "a0110a47.53535"
+                "51cace14.0f32c8"
             ]
         ]
     },
     {
-        "id": "a0110a47.53535",
+        "id": "51cace14.0f32c8",
         "type": "Cache in",
-        "z": "e9528acf.2c82d",
+        "z": "824dab07.1cfb3",
         "name": "",
-        "cache": "b27f65d.3e20898",
+        "cache": "9a2a6fe9.ad297",
         "keyType": "msg",
         "keyProperty": "topic",
         "valueType": "msg",
         "valueProperty": "payload",
         "useString": false,
-        "x": 460,
-        "y": 180,
+        "outputs": 2,
+        "x": 380,
+        "y": 120,
         "wires": [
             [
-                "64cb797d.35d3"
+                "d33ce6db.81781"
+            ],
+            [
+                "6675fe56.38d0d8"
             ]
         ]
     },
     {
-        "id": "64cb797d.35d3",
+        "id": "d33ce6db.81781",
         "type": "debug",
-        "z": "e9528acf.2c82d",
-        "name": "",
+        "z": "824dab07.1cfb3",
+        "name": "Cache Hit!",
         "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 680,
-        "y": 180,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 590,
+        "y": 120,
         "wires": []
     },
     {
-        "id": "6879b817.90256",
+        "id": "8a636b27.8048a",
         "type": "inject",
-        "z": "e9528acf.2c82d",
-        "name": "",
+        "z": "824dab07.1cfb3",
+        "name": "Store Timestamp",
         "topic": "timestamp",
         "payload": "",
         "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 280,
-        "y": 300,
+        "onceDelay": "",
+        "x": 180,
+        "y": 240,
         "wires": [
             [
-                "c861ebf4.e5bf7"
+                "a4fb7499.3bd4"
             ]
         ]
     },
     {
-        "id": "c861ebf4.e5bf7",
+        "id": "a4fb7499.3bd4",
         "type": "Cache out",
-        "z": "e9528acf.2c82d",
+        "z": "824dab07.1cfb3",
         "name": "",
-        "cache": "b27f65d.3e20898",
+        "cache": "9a2a6fe9.ad297",
         "keyType": "msg",
         "keyProperty": "topic",
         "valueType": "msg",
@@ -81,31 +103,52 @@
         "ttlType": "msg",
         "ttlProperty": "",
         "useString": false,
-        "x": 460,
-        "y": 300,
+        "x": 380,
+        "y": 240,
         "wires": []
     },
     {
-        "id": "e9315f78.94def",
+        "id": "aba84e5b.0f6ed8",
         "type": "inject",
-        "z": "e9528acf.2c82d",
-        "name": "",
+        "z": "824dab07.1cfb3",
+        "name": "Store Timestamp2",
         "topic": "timestamp2",
         "payload": "",
         "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 280,
-        "y": 380,
+        "onceDelay": "",
+        "x": 190,
+        "y": 320,
         "wires": [
             [
-                "c861ebf4.e5bf7"
+                "a4fb7499.3bd4"
             ]
         ]
     },
     {
-        "id": "b27f65d.3e20898",
+        "id": "cecf39c6.20a25",
+        "type": "inject",
+        "z": "824dab07.1cfb3",
+        "name": "Retrieve Timestamp",
+        "topic": "timestamp",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "51cace14.0f32c8"
+            ]
+        ]
+    },
+    {
+        "id": "9a2a6fe9.ad297",
         "type": "Cache",
         "z": "",
         "name": "abcd",

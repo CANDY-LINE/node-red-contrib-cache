@@ -5,3 +5,4 @@ test/*.js
 *.tgz
 *.log
 dist
+.node-version

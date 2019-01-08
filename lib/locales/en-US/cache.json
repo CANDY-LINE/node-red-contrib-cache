@@ -7,7 +7,8 @@
       "keyProperty" : "Key Property",
       "valueProperty" : "Value Property",
       "ttlProperty" : "TTL Property",
-      "useString" : "Use string payload"
+      "useString" : "Use string payload",
+      "cacheMissRouting": "Route to the second port on a cache miss"
     },
     "placeholder" : {
       "keyProperty" : "default: topic",
