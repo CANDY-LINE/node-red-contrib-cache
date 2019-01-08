@@ -1,16 +1,80 @@
 <script type="text/x-red" data-help-name="Cache in">
   <p>Input node for Cache</p>
   <p>Use this node in order to load a stored data associated with <code>msg.topic</code>.</p>
-  <p>This node set <code>null</code> to <code>msg.payload</code> when <code>msg.topic</code> is empty or there&apos;s no value corresponding to the <code>msg.topic</code>.</p>
-  <p>The property names for key(<code>msg.topic</code>) and value(<code>msg.payload</code>) are configurable.</p>
   <p>The number in the status message shows the size of the cached entries.</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt>topic<span class="property-type">string</span></dt>
+    <dd>
+    The key associated with the stored value. Mandatory.
+    The name of this property (<code>topic</code>) is configurable in <code>Cache</code> config node.
+    This value is IGNORED when <code>dump</code> property is <code>true</code>.
+    </dd>
+    <dt>dump<span class="property-type">boolean</span></dt>
+    <dd>
+    Whether or not to dump all entries in the cache.
+    This node copies all the values in the cache into the value property(<code>payload</code> by default).
+    </dd>
+  </dl>
+
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>topic<span class="property-type">string</span></dt>
+    <dd>
+    The key associated with the stored value. Mandatory.
+    </dd>
+    <dt>payload<span class="property-type">string</span></dt>
+    <dd>
+    The stored value. Can be <code>null</code> when nothing is associated with the given key.
+    </dd>
+    <dt>dump<span class="property-type">boolean</span></dt>
+    <dd>
+    Whether or not to dump all entries in the cache.
+    </dd>
+  </dl>
 </script>
 
 <script type="text/x-red" data-help-name="Cache out">
-   <p>Output node for Cache</p>
-   <p>Use this node in order to store a <code>msg.payload</code> associated with <code>msg.topic</code>.</p>
-   <p>This node does nothing when <code>msg.topic</code> is empty.</p>
-   <p>The property names for key(<code>msg.topic</code>) and value(<code>msg.payload</code>) are configurable.</p>
-   <p>You can also provide TTL in <code>msg</code> object if necessary by setting <code>TTL property</code> in this node (not mandatory).</p>
-   <p>The number in the status message shows the size of the cached entries.</p>
+  <p>Output node for Cache</p>
+  <p>Use this node in order to store a <code>msg.payload</code> associated with <code>msg.topic</code>.</p>
+  <p>This node does nothing when <code>msg.topic</code> is empty.</p>
+  <p>The number in the status message shows the size of the cached entries.</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt>topic<span class="property-type">string</span></dt>
+    <dd>
+    The key associated with the stored value. Mandatory.
+    The name of this property (<code>topic</code>) is configurable in <code>Cache</code> config node.
+    </dd>
+    <dt>payload<span class="property-type">string</span></dt>
+    <dd>
+    The stored value. Mandatory.
+    The name of this property (<code>payload</code>) is configurable in <code>Cache</code> config node.
+    </dd>
+    <dt>ttl<span class="property-type">string</span></dt>
+    <dd>
+    Time to live in seconds. Optional.
+    </dd>
+  </dl>
+</script>
+
+<script type="text/x-red" data-help-name="Cache">
+  <p>Cache configuration node</p>
+  <p>With this node, you can configure the cache store.</p>
+  <dl>
+  <dt>Name</dt>
+  <dd>
+    the label of the node.
+  </dd>
+  <dt>Default TTL</dt>
+  <dd>
+    The default TTL in seconds for a cache entry.
+  </dd>
+  <dt>Check Interval</dt>
+  <dd>
+    The default cache lifetime checking interval in seconds.
+  </dd>
+  </dl>
 </script>
