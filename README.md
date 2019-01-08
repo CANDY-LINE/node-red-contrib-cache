@@ -27,6 +27,9 @@ npm install --production node-red-contrib-cache
 You can import an example from the menu (`Import > Examples > cache > Cache Example`) on the editor.
 
 # Revision History
+* 2.0.0
+    - Add a new feature to route a message object to another port on a cache miss, disabled by default (#3)
+    - Introduce a new property 'dump' to dump all entries in the cache (#4)
 * 1.1.0
     - Fix #2
     - Move the example flow to Import menu
