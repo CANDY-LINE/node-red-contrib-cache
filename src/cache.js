@@ -39,6 +39,7 @@ export default function(RED) {
       this.keyProperty = n.keyProperty || 'topic';
       this.valueProperty = n.valueProperty || 'payload';
       this.useString = n.useString;
+      this.cacheMissRouting = n.outputs > 1;
       this.cacheNodeId = n.cache;
       this.cacheNode = RED.nodes.getNode(this.cacheNodeId);
       if (this.cacheNode) {
@@ -62,8 +63,15 @@ export default function(RED) {
             if (key) {
               this.cacheNode.cache.get(key, (err, value) => {
                 if (!err) {
-                  RED.util.setMessageProperty(msg, this.valueProperty, ((value === '' || value === undefined) ? null : value));
-                  this.send(msg);
+                  let cacheMiss = (value === undefined);
+                  RED.util.setMessageProperty(msg, this.valueProperty, ((value === '' || cacheMiss) ? null : value));
+                  if (this.cacheMissRouting) {
+                    let ports = [];
+                    ports[cacheMiss ? 1 : 0] = msg;
+                    this.send(ports);
+                  } else {
+                    this.send(msg);
+                  }
                 }
               });
             }
