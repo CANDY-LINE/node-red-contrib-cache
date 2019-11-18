@@ -14,8 +14,8 @@
       "keyProperty" : "default: topic",
       "valueProperty" : "default: payload",
       "ttlProperty" : "(optional)",
-      "defaultTtl" : "(in seconds, 0=unlimited)",
       "checkPeriod" : "(in seconds, 0=never checked)"
+      "defaultTtl" : "(in seconds, empty here for unlimited TTL)",
     },
     "status": {
       "keys": "__n__"
