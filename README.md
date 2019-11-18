@@ -27,7 +27,7 @@ npm install --production node-red-contrib-cache
 You can import an example from the menu (`Import > Examples > cache > Cache Example`) on the editor.
 
 # Revision History
-* 2.0.2
+* 2.0.2-2.0.3
     - Fix JSON format error
 * 2.0.1
     - Revise Default TTL description on the node help content and README as the node immediately clears its cache content when Default TTL is 0

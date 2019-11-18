@@ -15,7 +15,7 @@
       "valueProperty" : "default: payload",
       "ttlProperty" : "(optional)",
       "checkPeriod" : "(in seconds, 0=never checked)",
-      "defaultTtl" : "(in seconds, empty here for unlimited TTL)",
+      "defaultTtl" : "(in seconds, empty here for unlimited TTL)"
     },
     "status": {
       "keys": "__n__"

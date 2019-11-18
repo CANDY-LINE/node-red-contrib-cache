@@ -60,3 +60,11 @@ describe('cache module', () => {
     });
   });
 });
+
+describe('i18n', () => {
+  describe('cache.json', () => {
+    it('should be a valid JSON', () => {
+      require(`${__dirname}/../locales/en-US/cache.json`);
+    });
+  });
+});
