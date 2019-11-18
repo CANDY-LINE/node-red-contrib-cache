@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-cache",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Node-RED nodes for memory cache",
   "license": "MIT",
   "repository": {
@@ -15,7 +15,7 @@
     "build": "grunt build",
     "test": "grunt test",
     "clean": "grunt clean",
-    "prepublish": "grunt build"
+    "prepare": "grunt build"
   },
   "homepage": "https://github.com/CANDY-LINE/node-red-contrib-cache#readme",
   "keywords": [
